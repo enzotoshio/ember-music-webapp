@@ -41,6 +41,7 @@
     "ember-resolver": "^2.0.3",
     "express": "^4.13.4",
     "glob": "^4.5.3",
+    "graceful-fs": "^4.1.11",
     "loader.js": "^4.0.0",
     "morgan": "^1.7.0"
   },
