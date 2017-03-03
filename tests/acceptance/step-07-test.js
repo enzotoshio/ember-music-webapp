@@ -39,13 +39,13 @@ step(7, "Add a Helper");
 test("The helper correctly formats number of seconds into human-readable strings", function() {
   ok(formatDuration, "The format-duration helper exists");
 
-  equal(formatDuration(0), '0:00', "0 is converted into 0:00");
-  equal(formatDuration(8), '0:08', "Less than 10 seconds gets 0-padded");
-  equal(formatDuration(20), '0:20', "Numbers with trailing zeros are not truncated");
-  equal(formatDuration(60), '1:00', "Exactly 60 seconds is converted into 1:00");
-  equal(formatDuration(61), '1:01', "Less than 10 seconds into a minute gets 0-padded");
-  equal(formatDuration(70), '1:10', "Numbers with trailing zeros greater than one minute are not truncated");
-  equal(formatDuration(125), '2:05', "The helper works with multiple minutes");
+  equal(formatDuration([0]), '0:00', "0 is converted into 0:00");
+  equal(formatDuration([8]), '0:08', "Less than 10 seconds gets 0-padded");
+  equal(formatDuration([20]), '0:20', "Numbers with trailing zeros are not truncated");
+  equal(formatDuration([60]), '1:00', "Exactly 60 seconds is converted into 1:00");
+  equal(formatDuration([61]), '1:01', "Less than 10 seconds into a minute gets 0-padded");
+  equal(formatDuration([70]), '1:10', "Numbers with trailing zeros greater than one minute are not truncated");
+  equal(formatDuration([125]), '2:05', "The helper works with multiple minutes");
 });
 
 test("Each album formats the duration in seconds as MM:SS", function() {
