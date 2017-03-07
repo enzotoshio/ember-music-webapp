@@ -3,24 +3,23 @@ import Ember from 'ember';
 const inject = Ember.inject;
 
 export default Ember.Component.extend({
-    isPlaying: false,
     player: inject.service(),
-
-    classNameBindings: ['isPlaying'],
+    isPlaying: function() {
+        // debugger
+        return this.get('isCurrentSong') && this.get('player.isPlaying');
+    }.property('isCurrentSong', 'player.isPlaying'),
+    song: null,
+    isCurrentSong: function() {
+        return this.get('player.song') === this.get('song');
+    }.property('player.song', 'song'),
 
     actions: {
         play() {
             this.get('player').play(this.get('song'));
-            this.toggle();
         },
 
         pause() {
             this.get('player').pause();
-            this.toggle();
         }
-    },
-
-    toggle() {
-        this.toggleProperty('isPlaying');
     }
 });
