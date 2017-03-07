@@ -19,8 +19,8 @@ moduleForComponent('now-playing', "Step 14: Toggle ellapsed/current time", {
   needs: [
     'helper:format-duration',
     'service:player',
-    'component:audio-control',
-    'template:components/audio-control'
+    'component:track-button',
+    'template:components/track-button'
   ],
 });
 
@@ -39,8 +39,20 @@ test("when a song is loaded and the player is not playing, the component shows t
 });
 
 test("Toggling current and remaining time", function() {
+  var player = Ember.Object.extend().create();
+  var component = this.subject({player: player});
 
-  // TODO: IMPLEMENT THIS TEST
+  Ember.run(() => {
+    player.set('song', {duration: '120'});
+    player.set('currentTime', 30);
+  });
+
+  const durationElement = this.$().find('.duration');
+
+  equal(durationElement.text().trim(), '0:30', 'The component should show the current time');
+
+  durationElement.click();
+
+  equal(durationElement.text().trim(), '1:30', 'The component should show the remaining time');
 
 });
-

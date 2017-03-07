@@ -21,12 +21,12 @@ export default Ember.Service.extend({
         this.get('audioElement').play();
     },
 
-    pause() {
-        this.get('audioElement').pause();
+    resume() {
+        this.get('audioElement').play();
     },
 
-    toggle() {
-        this.toggleProperty('isPlaying');
+    pause() {
+        this.get('audioElement').pause();
     },
 
     setupAudioElement: function() {

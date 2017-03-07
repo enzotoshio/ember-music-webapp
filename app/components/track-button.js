@@ -5,7 +5,6 @@ const inject = Ember.inject;
 export default Ember.Component.extend({
     player: inject.service(),
     isPlaying: function() {
-        // debugger
         return this.get('isCurrentSong') && this.get('player.isPlaying');
     }.property('isCurrentSong', 'player.isPlaying'),
     song: null,
@@ -15,11 +14,11 @@ export default Ember.Component.extend({
 
     actions: {
         play() {
-            this.get('player').play(this.get('song'));
+            this.sendAction('play');
         },
 
         pause() {
-            this.get('player').pause();
+            this.sendAction('pause');
         }
     }
 });
